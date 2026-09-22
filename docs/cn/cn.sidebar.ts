@@ -1,7 +1,9 @@
+import type { DocsSidebarConfig } from '@142vip/vuepress'
+
 /**
  * 计算机网络
  */
-export const cnSidebar = [
+export const cnSidebar: DocsSidebarConfig = [
   {
     text: '体系结构',
     prefix: '体系结构',

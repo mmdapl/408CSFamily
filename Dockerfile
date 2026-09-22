@@ -4,7 +4,7 @@
 # - 参数:
 #   APP_VERSION: 版本
 #
-# 注意：vite构建需要支持node14以上，安装node16较为稳妥
+# 构建阶段使用 infra 基础镜像（含 Node 25 + corepack），pnpm 版本由 package.json 的 packageManager 锁定
 
 FROM registry.cn-hangzhou.aliyuncs.com/142vip-infra/node:25.9.0-base AS build_base
 ARG NEED_PROXY
@@ -45,5 +45,5 @@ LABEL "repo.name"=$APP_NAME "repo.version"=$APP_VERSION  \
 # Git信息
 LABEL "git.hash"="$GIT_HASH" "git.message"="$GIT_MESSAGE"
 # 将dist文件中的内容复制到 /usr/share/nginx/html/ 这个目录下面 注意：--from参数
-COPY --from=build_base /apps/docs/.vuepress/dist/  /usr/share/nginx/html/
+COPY --from=build_base /apps/.vuepress/dist/  /usr/share/nginx/html/
 COPY --from=build_base /apps/nginx.conf /etc/nginx/
