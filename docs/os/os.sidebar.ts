@@ -1,7 +1,9 @@
+import type { DocsSidebarConfig } from '@142vip/vuepress'
+
 /**
  * 操作系统
  */
-export const osSidebar = [
+export const osSidebar: DocsSidebarConfig = [
   {
     text: '系统概述',
     prefix: '系统概述',

@@ -1,8 +1,8 @@
 {
   "name": "408CSFamily",
   "type": "module",
-  "version": "0.0.1-alpha.19",
-  "packageManager": "pnpm@9.6.0",
+  "version": "0.0.1-alpha.21",
+  "packageManager": "pnpm@9.15.0",
   "description": "研究生考试408考点、工作面试计算机基础知识合集",
   "authorInfo": {
     "name": "微信公众号：储凡",
@@ -13,37 +13,27 @@
   "license": "MIT",
   "engines": {
     "node": ">=18.x",
-    "pnpm": "9.6.0"
+    "pnpm": "9.15.0"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm && chmod +x ./scripts/*",
-    "postinstall": "rm -rf .git/hooks && npx simple-git-hooks",
-    "clean": "npx fa clean --ignore-tips --dist --vite --deps --all",
-    "clean:hooks": "npx fa clean --git-hooks --all --ignore-tips",
+    "dev": "npx vuepress dev",
+    "build": "npx vuepress build --clean-temp --clean-cache",
+    "build:proxy": "NEED_PROXY=true npx vuepress build --clean-temp --clean-cache",
+    "build:image": "./scripts/build-image",
     "lint": "npx fa lint",
     "lint:fix": "npx fa lint --fix",
-    "dev": "pnpm build:mark-map && npx vuepress dev docs",
-    "build": "npx vuepress build docs --clean-temp --clean-cache",
-    "build:proxy": "NEED_PROXY=true npx vuepress build docs --clean-temp --clean-cache",
-    "build:mark-map": "npx node --loader ts-node/esm --no-warnings scripts/core/mark-map.ts",
-    "release": "npx fa release --vip --check-branch next --check-branch main",
-    "check:commit": "npx node --loader ts-node/esm --no-warnings scripts/core/verify-commit.ts"
+    "clean": "npx fa clean --ignore-tips --dist --vite --deps --all",
+    "clean:hooks": "npx fa clean --git-hooks --all --ignore-tips",
+    "release": "npx fa release",
+    "check:commit": "npx fa commit --quiet"
   },
   "devDependencies": {
-    "@142vip/commit-linter": "0.0.1-alpha.2",
-    "@142vip/eslint-config": "0.0.1-alpha.4",
-    "@142vip/fairy-cli": "0.0.3-alpha.25",
-    "@142vip/open-source": "0.0.1-alpha.3",
-    "@142vip/utils": "0.0.1-alpha.37",
-    "@142vip/vuepress": "0.0.1-alpha.17",
-    "markmap-cli": "0.18.11",
+    "@142vip/eslint-config": "0.0.1-alpha.9",
+    "@142vip/fairy-cli": "0.0.3-alpha.41",
+    "@142vip/open-source": "0.0.1-alpha.4",
+    "@142vip/utils": "0.0.1-alpha.65",
+    "@142vip/vuepress": "0.0.1-alpha.25",
     "only-allow": "1.2.1",
-    "simple-git-hooks": "2.13.0",
-    "ts-node": "10.9.2",
-    "xmind-embed-viewer": "1.2.0"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint:fix",
-    "commit-msg": "pnpm check:commit"
+    "ts-node": "10.9.2"
   }
 }
