@@ -8,5 +8,4 @@ export default defineVipEslintConfig({
     '.vuepress/.cache/**',
     'vuepress.config.ts.*.mjs',
   ],
-  rules: {},
 })

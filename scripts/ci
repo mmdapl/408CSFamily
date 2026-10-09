@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #
-# 依赖安装脚本
+# 依赖安装脚本（CI / Docker / 本地）
 # 使用:
 #   ./scripts/ci
+#   ./scripts/ci --ignore-scripts   # Docker 构建阶段跳过 lifecycle
 #
 
 set -euo pipefail
