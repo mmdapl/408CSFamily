@@ -17,12 +17,13 @@ WORKDIR /apps
 COPY . .
 
 ## 基于容器自动构建
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store sh ./scripts/ci && if [ "$NEED_PROXY" = "false" ];  \
-  then \
-     pnpm build; \
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+  sh ./scripts/ci --ignore-scripts && \
+  if [ "$NEED_PROXY" = "false" ]; then \
+    pnpm build; \
   else \
-     pnpm build:proxy; \
-  fi;
+    pnpm build:proxy; \
+  fi
 
 FROM --platform=linux/amd64 registry.cn-hangzhou.aliyuncs.com/142vip-infra/nginx:1.29.0-alpine
 
