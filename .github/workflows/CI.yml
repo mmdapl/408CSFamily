@@ -64,7 +64,7 @@ jobs:
 
       - name: Code LintFix
         run: |
-          pnpm lint
+          npx fa lint
 
       - name: Build Site
         run: |
@@ -132,4 +132,4 @@ jobs:
       # 快速构建并推送
       - name: Push Docker Image
         run: |
-          ./scripts/build-image
+          pnpm build:image
